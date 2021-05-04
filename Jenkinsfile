@@ -1,8 +1,6 @@
 pipeline{
     agent any
-    tools  {
-          terraform 'terraform-15'
-     }
+  
      stages {
       
           stage('Terraform Init'){
