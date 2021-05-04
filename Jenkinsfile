@@ -6,7 +6,7 @@ pipeline{
      stages{
           stage('Git Checkout'){
               steps{
-                  git credentialsId: 'git-credentials', url: 'https://github.com/cloudtechner/cloudtechner-automation.git'
+                  git credentialsId: 'git-credentials', url: 'https://github.com/navneetguraya/aprilterraform.git'
                }
 
           }
