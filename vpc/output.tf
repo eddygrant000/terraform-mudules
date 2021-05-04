@@ -7,3 +7,7 @@ output "subnet_public" {
   value = "${aws_subnet.publicsubnet.id}"
 }
 
+
+output "my_public_ip" {
+  value = "${data.external.myipaddr.result.ip}"
+}
