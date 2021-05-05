@@ -9,13 +9,13 @@ pipeline{
       
           stage('Terraform Init'){
               steps{
-                  sh 'terraform init'
+                  #sh 'terraform init'
               }
           }
 
            stage('Terraform validate'){
               steps{
-                   sh 'terraform validate'
+                   #sh 'terraform validate'
               }
           }
          stage('Terraform plan'){
@@ -25,6 +25,8 @@ pipeline{
                        if  (params.INPUT == "CREATE" )
                       {
                          sh '''
+                         terraform init
+                         terraform validate
                          terraform plan
                          terraform apply -auto-approve
                          '''
