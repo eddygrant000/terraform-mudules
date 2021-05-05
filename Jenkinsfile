@@ -2,6 +2,7 @@ pipeline{
     agent any
     parameters {
        choice(name: 'INPUT', choices: ['CREATE WITH DEFAULT VALUES','DESTROY','CREATE WITH CUSTOM VALUES'], description: 'default values :')
+    }
    
   
      stages {
