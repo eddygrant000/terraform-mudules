@@ -24,6 +24,7 @@ pipeline{
                        if  (params.INPUT == "CREATE" )
                       {
                          sh 'terraform plan'
+                         sh 'terraform apply -auto-approve'
                       }
                   }
               }
@@ -32,9 +33,9 @@ pipeline{
          stage('Terraform apply'){
               steps{
                   withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_cd', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                       if  (params.INPUT == "CREATE" )
+                       if  (params.INPUT == "DESTROY" )
                       {
-                          sh 'terraform apply -auto-approve'
+                          sh 'terraform destroy -auto-approve'
                       }
                   }
               }
