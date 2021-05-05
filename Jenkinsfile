@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment {
+    SVC_ACCOUNT_KEY = credentials('aws_secret_id')
+  }
   
      stages {
       
