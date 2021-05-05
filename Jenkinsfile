@@ -26,7 +26,8 @@ pipeline{
                       {
                          sh '''
                          terraform plan
-                         terraform apply -auto-approve'''
+                         terraform apply -auto-approve
+                         '''
                       }
                   }
               }
