@@ -1,7 +1,7 @@
 pipeline{
     agent any
     parameters {
-       choice(name: 'INPUT', choices: ['CREATE ','DESTROY'])
+       choice(name: 'INPUT', choices: ['CREATE','DESTROY'])
     }
    
   
