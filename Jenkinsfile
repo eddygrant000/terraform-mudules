@@ -20,6 +20,7 @@ pipeline{
           }
          stage('Terraform plan'){
               steps{
+                  script{
                   withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_cd', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                        if  (params.INPUT == "CREATE" )
                       {
@@ -29,9 +30,11 @@ pipeline{
                   }
               }
          }
+         }
        
          stage('Terraform apply'){
               steps{
+                  script{
                   withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_cd', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                        if  (params.INPUT == "DESTROY" )
                       {
@@ -41,4 +44,5 @@ pipeline{
               }
          }
      }
+}
 }
