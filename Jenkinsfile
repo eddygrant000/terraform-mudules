@@ -21,19 +21,23 @@ pipeline{
          stage('Terraform plan'){
               steps{
                   withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_cd', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                       if  (params.INPUT == "CREATE WITH DEFAULT VALUES" )
+                       if  (params.INPUT == "CREATE" )
                       {
-                        
                          sh 'terraform plan'
+                      }
+                  }
               }
-          }
          }
+       
          stage('Terraform apply'){
               steps{
                   withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_cd', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                   sh 'terraform apply -auto-approve'
+                       if  (params.INPUT == "CREATE" )
+                      {
+                          sh 'terraform apply -auto-approve'
+                      }
+                  }
               }
-          }
          }
      }
 }
