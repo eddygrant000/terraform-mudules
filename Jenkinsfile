@@ -6,18 +6,6 @@ pipeline{
    
   
      stages {
-      
-          stage('Terraform Init'){
-              steps{
-                  #sh 'terraform init'
-              }
-          }
-
-           stage('Terraform validate'){
-              steps{
-                   #sh 'terraform validate'
-              }
-          }
          stage('Terraform plan'){
               steps{
                   script{
